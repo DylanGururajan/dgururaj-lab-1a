@@ -1,0 +1,86 @@
+CSC 365
+Lab 1-a test suite
+
+TC-1
+requirements R3, R4
+short form command name, existing student
+expected output: HAVIR, BOBBIE, 2, 108, 0, 2.88, HAMER, GAVIN
+S: HAVIR
+
+TC-2
+requirements R3, R5
+short form command name and bus, existing student
+expected output: HAVIR, BOBBIE, 2, 108, 0, 2.88, HAMER, GAVIN
+S: HAVIR 0
+
+TC-3
+requirements R3, R6
+short form command name, existing teacher
+expected output:
+BRODERSEN, HYE, 3, 110, 0, 3.11, ALPERT, JONATHAN
+THEUNISSEN, GRACE, 3, 110, 54, 3.23, ALPERT, JONATHAN
+T: ALPERT
+
+TC-4
+requirements R3, R7
+short form command name, existing student
+expected output:
+SAELEE, DANILO, 1, 103, 54, 2.85, FALKER, ADOLPH
+GARTH, JOHN, 1, 103, 0, 3.14, FALKER, ADOLPH
+G: 1
+
+TC-5
+requirements R3, R8
+short form command name, existing student
+expected output:
+SWEDLUND, SHARRI, 3, 107, 55, 3.24, FAFARD, ROCIO
+ZAPPAVIGNA, ELLIOTT, 6, 106, 55, 3.15, BODZIONY, LUZ
+SAENPHIMMACHA, NUMBERS, 6, 111, 55, 2.88, NISTENDIRK, NANCY
+BOYTER, WAN, 6, 102, 55, 3.1, KERBS, BENITO
+KOZOLA, BUSTER, 2, 108, 55, 2.76, HAMER, GAVIN
+DEMARTINI, DEWAYNE, 6, 102, 55, 2.93, KERBS, BENITO
+BEX, TAMESHA, 4, 105, 55, 2.82, HANTZ, JED
+WERST, LEON, 6, 111, 55, 3.22, NISTENDIRK, NANCY
+LAMKIN, TAMA, 6, 111, 55, 3.23, NISTENDIRK, NANCY
+B: 55
+
+TC-6
+requirements R3, R9
+short form command name, existing student
+expected output: GARTH, JOHN, 1, 103, 0, 3.14, FALKER, ADOLPH
+G: 1 H
+
+TC-7
+requirements R3, R9
+short form and long command name, existing student
+expected output: SAELEE, DANILO, 1, 103, 54, 2.85, FALKER, ADOLPH
+G: 1 Low
+
+TC-8
+requirements R3, R10
+short form command name, existing students
+expected output:
+The Average GPA for Grade 3 is: 3.04
+A: 3
+
+TC-9
+requirements R3, R11
+long form command name
+expected output:
+0: 0
+1: 2
+2: 13
+3: 9
+4: 15
+5: 0
+6: 21
+Info
+
+TC-10
+requirements E1
+no such student
+expected output:
+No Students Found
+S: MATTHEW
+
+

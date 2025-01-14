@@ -19,7 +19,7 @@ def read_students_file(file_name):
     except FileNotFoundError:
         print("Error: students.txt not found.")
         exit(1)
-    except ValueError as e:
+    except IndexError as e:
         print(f"Error: Invalid File Syntax")
         exit(1)
 
@@ -43,7 +43,8 @@ def search_by_lastname(lastname, number):
     if found == []:
         print("No Students Found")
     else:
-        print(found)
+        for item in found:
+            print(", ".join(str(value) for value in item.values()))
 
 
 def search_by_teacher(lastname):
@@ -54,7 +55,8 @@ def search_by_teacher(lastname):
     if found == []:
         print("No Teachers Found")
     else:
-        print(found)
+        for item in found:
+            print(", ".join(str(value) for value in item.values()))
 
 
 def search_by_bus(number):
@@ -69,7 +71,7 @@ def search_by_bus(number):
         return found
 
 
-def search_by_grade(Grade):
+def search_by_grade(Grade, option):
     found = []
     for s in students:
         if s['Grade'] == int(Grade):
@@ -77,17 +79,39 @@ def search_by_grade(Grade):
     if found == []:
         print("No Students Found")
     else:
-        print(found)
+        if option is None:
+            for item in found:
+                print(", ".join(str(value) for value in item.values()))
+        elif option[0] == 'H':
+            max = found[0]
+            for item in found:
+                if item['GPA'] > max['GPA']:
+                    max = item
+            print(", ".join(str(value) for value in max.values()))
+        elif option[0] == 'L':
+            min = found[0]
+            for item in found:
+                if item['GPA'] < min['GPA']:
+                    min = item
+            print(", ".join(str(value) for value in min.values()))
 
-def search_by_GPA(GPA):
-    found = []
+
+def average(grade):
+    avg = 0.0
+    num = 0
     for s in students:
-        if str(s['GPA']) == str(GPA):
-            found.append(s)
-    if found == []:
+        if s['Grade'] == int(grade):
+            avg += s['GPA']
+            num += 1
+    if num == 0:
         print("No Students Found")
-    else:
-        print(found)
+        return
+
+    avg = avg / num
+    avg = avg // 0.01
+    avg = avg / 100
+    print(f"The Average GPA for Grade {grade} is: {avg}")
+
 
 def get_info():
     count = 0
@@ -113,13 +137,17 @@ if __name__ == "__main__":
         elif command[0][0] == 'B':
             a = search_by_bus(command[1])
             if a is not None:
-                print(a)
+                for item in a:
+                    print(", ".join(str(value) for value in item.values()))
             else:
                 print("No Students Found")
         elif command[0][0] == 'G':
-            search_by_grade(command[1])
+            if len(command) < 3:
+                search_by_grade(command[1], None)
+            else:
+                search_by_grade(command[1], command[2])
         elif command[0][0] == 'A':
-            search_by_GPA(command[1])
+            average(command[1])
         elif command[0][0] == 'I':
             get_info()
         elif command[0][0] == 'Q':
